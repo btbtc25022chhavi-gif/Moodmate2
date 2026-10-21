@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodMate - AI Wellness Companion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🌸 MoodMate
+    </div>
+
+    <ul class="nav-links">
+        <li>Dashboard</li>
+        <li>Journal</li>
+        <li>Recommendations</li>
+        <li>Profile</li>
+    </ul>
+
+    <button class="dark-btn" onclick="darkMode()">
+        🌙
+    </button>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <h1 id="greeting">
+            Good Evening 👋
+        </h1>
+
+        <h2>
+            Welcome to MoodMate
+        </h2>
+
+        <p>
+            Your personal wellness companion that helps you
+            relax, stay productive and feel happier every day.
+        </p>
+
+        <div class="mood-buttons">
+
+            <button onclick="changeMood('happy')">😊</button>
+
+            <button onclick="changeMood('excited')">😁</button>
+
+            <button onclick="changeMood('calm')">😌</button>
+
+            <button onclick="changeMood('stressed')">😔</button>
+
+            <button onclick="changeMood('sad')">😭</button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <div class="meter-card">
+
+            <h3>❤️ Happiness Meter</h3>
+
+            <div class="progress">
+
+                <div id="progress-bar"></div>
+
+            </div>
+
+            <p id="meterText">
+                75% Happy
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="dashboard">
+
+    <!-- Mood Recommendation -->
+
+    <div class="card">
+
+        <h2>😊 Mood Recommendation</h2>
+
+        <p id="recommendation">
+
+            Select your mood to receive personalised recommendations.
+
+        </p>
+
+    </div>
+
+    <!-- Books -->
+
+    <div class="card">
+
+        <h2>📚 Recommended Books</h2>
+
+        <div id="bookBox">
+
+            <h3>📖 Atomic Habits</h3>
+
+            <p>⭐⭐⭐⭐⭐</p>
+
+            <p>Build good habits and improve your life.</p>
+
+        </div>
+
+    </div>
+
+    <!-- Movies -->
+
+    <div class="card">
+
+        <h2>🎬 Movies & Dramas</h2>
+
+        <div id="movieBox">
+
+            <h3>🎥 Zindagi Na Milegi Dobara</h3>
+
+            <p>Adventure • Friendship</p>
+
+            <p>⭐⭐⭐⭐⭐</p>
+
+        </div>
+
+    </div>
+
+    <!-- Music -->
+
+    <div class="card">
+
+        <h2>🎵 Music Therapy</h2>
+
+        <div id="musicBox">
+
+            <h3>Lo-fi Relax Playlist</h3>
+
+            <p>Perfect for relaxing your mind.</p>
+
+            <button class="card-btn">
+
+                ▶ Play
+
+            </button>
+
+        </div>
+
+    </div>
+        <!-- Comfort Food -->
+
+    <div class="card">
+
+        <h2>🍕 Comfort Food</h2>
+
+        <div id="foodBox">
+
+            <h3>🍕 Pizza</h3>
+
+            <p>Your comfort food recommendation.</p>
+
+            <button class="card-btn" onclick="changeFood()">
+
+                Surprise Me
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Journal -->
+
+    <div class="card">
+
+        <h2>📖 Daily Journal</h2>
+
+        <textarea
+            id="journal"
+            placeholder="How are you feeling today? Write your thoughts...">
+        </textarea>
+
+        <button
+            class="card-btn"
+            onclick="saveJournal()">
+
+            Save Journal
+
+        </button>
+
+    </div>
+
+    <!-- Productivity -->
+
+    <div class="card">
+
+        <h2>✅ Today's Productivity</h2>
+
+        <label><input type="checkbox"> Drink Water</label>
+
+        <label><input type="checkbox"> Exercise</label>
+
+        <label><input type="checkbox"> Study</label>
+
+        <label><input type="checkbox"> Read Book</label>
+
+        <label><input type="checkbox"> Sleep Early</label>
+
+        <br><br>
+
+        <div class="progress">
+
+            <div id="taskBar"></div>
+
+        </div>
+
+        <p id="taskText">
+
+            0% Completed
+
+        </p>
+
+    </div>
+
+    <!-- Water Tracker -->
+
+    <div class="card">
+
+        <h2>💧 Water Intake</h2>
+
+        <h1 id="waterCount">
+
+            0 Glasses
+
+        </h1>
+
+        <button
+            class="card-btn"
+            onclick="drinkWater()">
+
+            + Drink Water
+
+        </button>
+
+    </div>
+
+    <!-- Daily Goal -->
+
+    <div class="card">
+
+        <h2>🎯 Today's Goal</h2>
+
+        <input
+            type="text"
+            id="goalInput"
+            placeholder="Enter today's goal">
+
+        <br><br>
+
+        <button
+            class="card-btn"
+            onclick="saveGoal()">
+
+            Save Goal
+
+        </button>
+
+        <p id="goalText">
+
+            No Goal Yet
+
+        </p>
+
+    </div>
+
+    <!-- AI Wellness Companion -->
+
+    <div class="card">
+
+        <h2>🤖 MoodMate AI</h2>
+
+        <p>
+
+            Tell me how you're feeling.
+
+        </p>
+
+        <input
+
+            id="userInput"
+
+            type="text"
+
+            placeholder="Type here...">
+
+        <br><br>
+
+        <button
+
+            class="card-btn"
+
+            onclick="chatBot()">
+
+            Send
+
+        </button>
+
+        <p id="aiReply">
+
+            Hi! I'm here for you ❤️
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Quote Banner -->
+
+<section class="quote-banner">
+
+    <h2>
+
+        🌞 Quote of the Day
+
+    </h2>
+
+    <h3 id="quote">
+
+        Believe in yourself.
+
+    </h3>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+    <h2>
+
+        🌸 MoodMate
+
+    </h2>
+
+    <p>
+
+        Your Personal Wellness Companion
+
+    </p>
+
+    <p>
+
+        Built with ❤️ using HTML, CSS & JavaScript
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
